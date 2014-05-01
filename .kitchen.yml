@@ -1,0 +1,20 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-13.10
+  - name: centos-6.5
+  - name: centos-5.8
+    driver:
+      box_url: https://dl.dropbox.com/u/17738575/CentOS-5.8-x86_64.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[s3ninja::default]
+    attributes:

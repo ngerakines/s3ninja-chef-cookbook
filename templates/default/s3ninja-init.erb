@@ -1,0 +1,40 @@
+#!/bin/bash
+
+JAVA_HOME=<%= node[:java][:java_home] %>
+export JAVA_HOME
+
+S3NINJA_HOME=/home/s3ninja
+S3NINJA_CTL=$S3NINJA_HOME/sirius.sh
+
+start() {
+	echo -n "Starting s3ninja: "
+	cd $S3NINJA_HOME
+	${S3NINJA_CTL} start
+	echo "done."
+}
+
+stop() {
+	echo -n "Shutting down s3ninja: "
+
+	cd $S3NINJA_HOME
+	${S3NINJA_CTL} stop
+	echo "done."
+}
+
+case "$1" in
+	start)
+		start
+	;;
+	stop)
+		stop
+	;;
+	restart)
+		stop
+		sleep 10 ## NKG: Christ.
+		start
+	;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+esac
+
+exit 0
