@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2014 Nick Gerakines <nick@gerakines.net>
 # 
-# All rights reserved - Do Not Redistribute
+# This project and its contents are open source under the MIT license.
 #
 
 include_recipe 's3ninja::app'
